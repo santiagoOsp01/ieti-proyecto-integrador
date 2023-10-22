@@ -1,17 +1,21 @@
+import { isValidElement } from "react";
+
 export const Task = (props)=>{
 
-    const {name, checked} = props;
+    const {name, checked, onChangeCheck} = props;
 
-    const handleCheckTaskClick = () => {
-        checked = !checked;
+    const handleChangeCheck = () => {
+      onChangeCheck(name);  
     };
 
     return (
         <li>
-            <label htmlFor={name}>
-                {name}
-                <input type="checkbox" defaultChecked={checked} name={name} onClick={handleCheckTaskClick}/>
-            </label>
+            <>
+                <label htmlFor={name}>
+                    {name}
+                    <input type="checkbox" checked={checked} onChange={handleChangeCheck}/>
+                </label>
+            </>
         </li>
     );
 }
